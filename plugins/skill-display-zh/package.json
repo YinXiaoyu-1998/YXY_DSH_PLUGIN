@@ -1,0 +1,63 @@
+{
+  "name": "dsh-skill-display-zh",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Use agents/openai.yaml display_name and short_description in the DSH skill menu, with compatibility diagnostics.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git",
+    "directory": "plugins/skill-display-zh"
+  },
+  "homepage": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-zh",
+  "bugs": {
+    "url": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "skills",
+    "localization"
+  ],
+  "type": "module",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./client": "./lib/client.cjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "sync": "node scripts/sync-metadata.mjs",
+    "test": "node test/patch.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-input-trigger",
+        "@deepseek-ai/dsh-client-ui-skill"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.0",
+    "@deepseek-ai/dsh-client-ui-input-trigger": ">=0.2.0-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-client-ui-skill": ">=0.2.0-rc.1 <0.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-client-ui-input-trigger": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-skill": {
+      "optional": true
+    }
+  }
+}

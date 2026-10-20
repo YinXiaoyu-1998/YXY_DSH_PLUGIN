@@ -1,0 +1,11 @@
+{
+  "name": "yxy-dsh-plugins",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A collection of DeepSeek Harness plugins by Yin Xiaoyu.",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/test-all.mjs"
+  },
+  "license": "MIT"
+}
