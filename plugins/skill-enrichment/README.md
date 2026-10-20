@@ -72,7 +72,7 @@ storytelling-dialogue 和英文描述。
 
 插件加载时会在 Web 控制台打印一行版本日志，例如：
 
-    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:38:15.300Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:57:00.732Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
     [skill-enrichment] patched /skill menu source; 32 labels available
 
 状态有六种：

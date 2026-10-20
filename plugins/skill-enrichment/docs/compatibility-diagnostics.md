@@ -25,7 +25,7 @@ Only active changes visible behavior. native and inactive are intentional no-ops
 
 One line at startup:
 
-    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:38:15.300Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:57:00.732Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
 
 The fields are:
 
@@ -56,7 +56,7 @@ It returns a JSON string with:
     {
       "plugin": "dsh-skill-enrichment",
       "version": "0.3.0",
-      "builtAt": "2026-10-20T04:38:15.300Z",
+      "builtAt": "2026-10-20T04:57:00.732Z",
       "metadataHash": "4439d703fabd",
       "dshVersion": "0.2.1-rc.2",
       "status": "active",
