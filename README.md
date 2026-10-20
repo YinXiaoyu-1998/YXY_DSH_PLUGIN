@@ -39,7 +39,7 @@ Clone the repository, then install a plugin directory into a DSH profile:
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
     DSH="dsh"   # or the full path to the dsh CLI
-    "$DSH" plugin --profile <profile> add "$PWD/plugins/skill-display-zh"
+    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-zh"
 
 Then restart the profile (or reload the plugin from Settings → Plugins).
 

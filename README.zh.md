@@ -35,7 +35,7 @@ plugins/ 下每个目录都是一个完整、可独立安装的 DSH 插件包。
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
     DSH="dsh"   # 或 dsh CLI 的完整路径
-    "$DSH" plugin --profile <profile> add "$PWD/plugins/skill-display-zh"
+    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-zh"
 
 然后重启 profile，或在“设置 → 插件”里重新加载。
 

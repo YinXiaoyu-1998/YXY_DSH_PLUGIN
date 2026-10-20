@@ -82,9 +82,9 @@ At minimum:
 ## 7. Test in a throwaway profile
 
     DSH="dsh"
-    "$DSH" --profile probe-<topic> --from-default-profile web --dump-config
-    "$DSH" plugin --profile probe-<topic> add "$PWD/plugins/<purpose>"
-    "$DSH" --profile probe-<topic> --no-open --port 0
+    "$DSH" --profile probe-topic --from-default-profile web --dump-config
+    "$DSH" plugin --profile probe-topic add "$PWD/plugins/purpose"
+    "$DSH" --profile probe-topic --no-open --port 0
 
 Delete the probe profile after testing. Do not edit the desktop profile until the probe passes.
 
