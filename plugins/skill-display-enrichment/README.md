@@ -8,7 +8,10 @@
 历史：v0.2.0 之前叫 skill-display-zh；v0.4.0 起叫 skill-display-enrichment，
 因为“zh”把显示语言写进了插件名，而实际语言由 metadata 决定。
 
-![预览](docs/preview.png)
+![示例预览](docs/preview.png)
+
+> 示意图：菜单里显示 displayName（例如“大肥鱼审代码”），旁边保留原始
+> /name（code-review）；实际 DSH 菜单会按当前安装的 skill 渲染。
 
 ## 它做什么
 
