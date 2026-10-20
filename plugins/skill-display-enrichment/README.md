@@ -24,9 +24,12 @@ storytelling-dialogue 和英文描述。
 这个插件在 Web 客户端里找到 ui-skill 注册的 / 菜单源，保留它的筛选和
 选择逻辑，只给候选项补上：
 
-- label：本地化显示名（示例为中文）
+- label：本地化显示名或自定义别名（示例为中文）
 - description：本地化简述
 - name：仍然是真实 skill 名，因此选中后插入的还是 /storytelling-dialogue
+
+displayName 不一定是翻译：例如原始 skill 是 code-review，菜单可以显示
+“大肥鱼审代码”；选中后仍然插入 /code-review。
 
 菜单会显示成：
 

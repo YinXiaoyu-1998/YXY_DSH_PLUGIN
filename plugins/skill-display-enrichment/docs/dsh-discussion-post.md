@@ -8,6 +8,14 @@ Posted: https://github.com/deepseek-ai/deepseek-harness/discussions/10375
 
 这个需求不限于中文，任何语言都适用：routing 元数据保持稳定，展示元数据按读者语言提供。
 
+displayName 也不一定非要是翻译。它可以是别名、团队术语或个性化名称。例如：
+
+- 原始 name：code-review
+- 本地化显示名：代码审查
+- 自定义别名：大肥鱼审代码
+
+不管显示名是什么，/code-review 这个调用方式都不变。
+
 ## 当前问题
 
 DSH 目前把 routing 和展示混在同一组字段里：
@@ -32,7 +40,7 @@ DSH 不读这个 sidecar。一个包含几十个英文 skill 的目录，在 / �
 
 给 skill 元数据增加两个可选字段：
 
-- displayName：人类可读的菜单标题；缺省回退 name；
+- displayName：人类可读的菜单标题；缺省回退 name。它可以是翻译、别名、团队术语或自定义名称；
 - shortDescription：人类可读的短描述；缺省回退 description。
 
 建议的来源优先级：

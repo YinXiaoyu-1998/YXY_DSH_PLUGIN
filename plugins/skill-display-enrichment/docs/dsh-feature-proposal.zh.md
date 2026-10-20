@@ -8,7 +8,7 @@
 
 给 skill 增加两个可选字段：
 
-- displayName：人类可读的菜单标题，缺省回退到 name；
+- displayName：人类可读的菜单标题；可以是翻译、别名、团队术语或自定义名称。缺省回退到 name；
 - shortDescription：人类可读的短描述，缺省回退到 description。
 
 模型路由用的 description 和调用用的 name 都不变，只改“人看的菜单”。
@@ -29,6 +29,14 @@ code-review 和英文描述。用户必须记住英文 id，界面和
 
 - 路由元数据：name、description，给模型和 /name 命令用；
 - 展示元数据：displayName、shortDescription，给人看的菜单用。
+
+displayName 不一定是翻译，也可以是别名、团队术语或个性化名称。例如：
+
+- name: code-review
+- displayName: 代码审查（本地化）
+- displayName: 大肥鱼审代码（别名）
+
+菜单显示选择的 displayName；/code-review 仍然调用同一个 skill。
 
 ## 现状
 

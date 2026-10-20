@@ -8,8 +8,8 @@ Related: public reference plugin at https://github.com/YinXiaoyu-1998/YXY_DSH_PL
 
 Add two optional, additive fields to skill metadata:
 
-- **displayName**: a human-facing label for menus and pickers. Defaults to **name**.
-- **shortDescription**: a short, localized description for human-facing menus. Defaults to **description**.
+- **displayName**: a human-facing label for menus and pickers. It may be a translation, alias, team term, or custom name. Defaults to **name**.
+- **shortDescription**: a short human-facing description. Defaults to **description**.
 
 The model-facing **description** and the kebab-case **name** stay unchanged. Only the human-facing menu uses the new fields, so routing and the /name invocation grammar are unaffected.
 
@@ -28,6 +28,14 @@ This is not a request to localize the model-facing routing text. It is a request
 
 - **routing metadata** (name, description) used by the model and the /name command;
 - **presentation metadata** (displayName, shortDescription) used by the human-facing menu.
+
+displayName is not limited to translation. It can be an alias or a personal/team name. For example:
+
+- name: code-review
+- displayName: 代码审查 (localization)
+- displayName: 大肥鱼审代码 (alias)
+
+The menu shows the chosen displayName; /code-review still invokes the same skill.
 
 ## Current behavior
 
