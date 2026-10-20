@@ -2,7 +2,7 @@
 
 Status: published as DSH Ideas discussion #10375 (https://github.com/deepseek-ai/deepseek-harness/discussions/10375), based on DSH 0.2.1-rc.2
 Scope: skill catalog metadata, skills/list transport, Web slash-menu rendering
-Related: public reference plugin at https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-enrichment
+Related: public reference plugin at https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-enrichment
 
 ## Summary
 
@@ -116,10 +116,10 @@ The reference client plugin in this repository demonstrates this behavior. It pa
 
 The reference plugin logs one line at startup and exposes a debug object:
 
-    [skill-enrichment] v0.3.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
-    [skill-enrichment] patched /skill menu source; 32 labels available
+    [skill-display-enrichment] v0.4.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-display-enrichment] patched /skill menu source; 32 labels available
 
-    window.__DSH_SKILL_ENRICHMENT__.report()
+    window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report()
 
 The report includes:
 
@@ -213,14 +213,14 @@ A per-locale JSON/YAML sidecar could support many languages, but it adds locale 
 
 ## Reference implementation status
 
-A client-side reference plugin is public at https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-enrichment (dsh-skill-enrichment, v0.3.0). It:
+A client-side reference plugin is public at https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-enrichment (dsh-skill-display-enrichment, v0.4.0). It:
 
 - reads agents/openai.yaml at build time;
 - patches the ui-skill candidates method only when native metadata is absent;
 - logs version/build/hash/DSH version/status;
-- exposes window.__DSH_SKILL_ENRICHMENT__.report();
+- exposes window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report();
 - switches to status "native" and restores the original method when native fields appear.
 
 The core patch is intentionally not submitted as a pull request: CONTRIBUTING.md says external pull requests are not accepted at the moment. This document is prepared for the documented Ideas discussion path. If maintainers want, the production diff can be attached as a reference patch and split into the file list above.
 
-The reference patch is plugins/skill-enrichment/docs/dsh-patch.diff. It is based on master commit 687f282e8625c6b8d11ff58211a90524be2e4317 and contains the five production files only. It has not been run through the repository test suite here; the test plan above is the intended follow-up.
+The reference patch is plugins/skill-display-enrichment/docs/dsh-patch.diff. It is based on master commit 687f282e8625c6b8d11ff58211a90524be2e4317 and contains the five production files only. It has not been run through the repository test suite here; the test plan above is the intended follow-up.

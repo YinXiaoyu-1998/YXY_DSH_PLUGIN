@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: "dsh-skill-enrichment",
+  id: "dsh-skill-display-enrichment",
   factory: (require) => {
     var module = { exports: {} };
     var exports = module.exports;
@@ -137,9 +137,9 @@ window.__ModuleLoader__.load({
   }
 };
     const BUILD = {
-  "plugin": "dsh-skill-enrichment",
-  "version": "0.3.0",
-  "builtAt": "2026-10-20T04:57:00.732Z",
+  "plugin": "dsh-skill-display-enrichment",
+  "version": "0.4.0",
+  "builtAt": "2026-10-20T05:00:52.716Z",
   "metadataHash": "4439d703fabd",
   "metadataCount": 32,
   "storytellingCount": 13
@@ -166,11 +166,11 @@ window.__ModuleLoader__.load({
     }
 
     function log(message) {
-      console.info("[skill-enrichment] " + message);
+      console.info("[skill-display-enrichment] " + message);
     }
 
     function warn(message) {
-      console.warn("[skill-enrichment] " + message);
+      console.warn("[skill-display-enrichment] " + message);
     }
 
     function counts() {
@@ -193,7 +193,7 @@ window.__ModuleLoader__.load({
       const c = counts();
       state.lastCheck = new Date().toISOString();
       return {
-        plugin: "dsh-skill-enrichment",
+        plugin: "dsh-skill-display-enrichment",
         version: BUILD.version,
         builtAt: BUILD.builtAt,
         metadataHash: BUILD.metadataHash,
@@ -211,7 +211,7 @@ window.__ModuleLoader__.load({
     }
 
     function publish(service) {
-      window.__DSH_SKILL_ENRICHMENT__ = {
+      window.__DSH_SKILL_DISPLAY_ENRICHMENT__ = {
         version: BUILD.version,
         build: BUILD,
         get status() { return state.status; },
@@ -345,7 +345,7 @@ window.__ModuleLoader__.load({
         if (restore) restore();
         state.status = "disposed";
         log("disposed");
-      }, "skill-enrichment");
+      }, "skill-display-enrichment");
     }
 
     exports.apply = apply;

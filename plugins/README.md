@@ -4,9 +4,9 @@ Each direct child directory is a self-contained DSH plugin package. Keep plugin-
 
 ## Naming
 
-- Directory: short kebab-case purpose, for example skill-enrichment.
-- package.json name: dsh-<purpose>, for example dsh-skill-enrichment.
-- Host plugin id: short stable id, for example skill-enrichment.
+- Directory: short kebab-case purpose, for example skill-display-enrichment.
+- package.json name: dsh-<purpose>, for example dsh-skill-display-enrichment.
+- Host plugin id: short stable id, for example skill-display-enrichment.
 
 The directory name and package name do not have to be identical, but keeping them close avoids confusion. The package name is what DSH resolves; the directory is only the install path.
 
@@ -35,4 +35,4 @@ The directory name and package name do not have to be identical, but keeping the
 
 | Directory | Package | Purpose |
 |---|---|---|
-| skill-enrichment | dsh-skill-enrichment | Localized display names / short descriptions in the DSH / skill menu. |
+| skill-display-enrichment | dsh-skill-display-enrichment | Localized display names / short descriptions in the DSH / skill menu. |

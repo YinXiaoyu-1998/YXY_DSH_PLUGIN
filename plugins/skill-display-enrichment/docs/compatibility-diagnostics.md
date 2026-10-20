@@ -1,6 +1,6 @@
 # Compatibility self-check and version log
 
-This document describes the diagnostics contract used by dsh-skill-enrichment and recommends the same pattern for other DSH client plugins that patch a host surface.
+This document describes the diagnostics contract used by dsh-skill-display-enrichment and recommends the same pattern for other DSH client plugins that patch a host surface.
 
 ## Goals
 
@@ -25,7 +25,7 @@ Only active changes visible behavior. native and inactive are intentional no-ops
 
 One line at startup:
 
-    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:57:00.732Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-display-enrichment] v0.4.0 loaded (build 2026-10-20T05:00:52.716Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
 
 The fields are:
 
@@ -38,10 +38,10 @@ The fields are:
 
 A second line reports the outcome:
 
-    [skill-enrichment] patched /skill menu source; 32 labels available
-    [skill-enrichment] native displayName/shortDescription detected; plugin idle
-    [skill-enrichment] skill source not found; plugin inactive
-    [skill-enrichment] disposed
+    [skill-display-enrichment] patched /skill menu source; 32 labels available
+    [skill-display-enrichment] native displayName/shortDescription detected; plugin idle
+    [skill-display-enrichment] skill source not found; plugin inactive
+    [skill-display-enrichment] disposed
 
 Warnings use console.warn; normal lifecycle messages use console.info.
 
@@ -49,14 +49,14 @@ Warnings use console.warn; normal lifecycle messages use console.info.
 
 The plugin exposes:
 
-    window.__DSH_SKILL_ENRICHMENT__.report()
+    window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report()
 
 It returns a JSON string with:
 
     {
-      "plugin": "dsh-skill-enrichment",
-      "version": "0.3.0",
-      "builtAt": "2026-10-20T04:57:00.732Z",
+      "plugin": "dsh-skill-display-enrichment",
+      "version": "0.4.0",
+      "builtAt": "2026-10-20T05:00:52.716Z",
       "metadataHash": "4439d703fabd",
       "dshVersion": "0.2.1-rc.2",
       "status": "active",
@@ -108,5 +108,5 @@ In all failure paths, the menu continues to work with the host's own name/descri
 
 - node test/patch.test.mjs covers active, native, late-source, and dispose paths.
 - In a live Web profile, open DevTools and run:
-      window.__DSH_SKILL_ENRICHMENT__.report()
+      window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report()
 - Confirm the startup line and the status match the visible menu behavior.

@@ -55,13 +55,13 @@ The slash-menu component already supports label: it renders label (or name), the
 The reference plugin is public:
 
 - Repository: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN
-- Plugin: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-enrichment
-- Proposal: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/blob/main/plugins/skill-enrichment/docs/dsh-feature-proposal.md
-- Reference patch: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/blob/main/plugins/skill-enrichment/docs/dsh-patch.diff
+- Plugin: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-enrichment
+- Proposal: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/blob/main/plugins/skill-display-enrichment/docs/dsh-feature-proposal.md
+- Reference patch: https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/blob/main/plugins/skill-display-enrichment/docs/dsh-patch.diff
 
 The plugin reads agents/openai.yaml at build time, patches the ui-skill candidates method only while native display fields are absent, and restores the original method when native fields appear.
 
-The plugin was originally named skill-display-zh; it was renamed to skill-enrichment in v0.3.0 because the display language is data, not part of the plugin.
+The plugin was originally named skill-display-zh; it was renamed to skill-display-enrichment in v0.4.0 because the display language is data, not part of the plugin.
 
 It also implements the diagnostics described below. The core patch is a design sketch at this point, not a CI-verified PR; the client-side reference is the part exercised against 0.2.1-rc.2.
 
@@ -77,10 +77,10 @@ Clients should feature-detect, not version-gate: on the first non-empty skills/l
 
 The reference plugin logs one line at startup and exposes a debug report:
 
-    [skill-enrichment] v0.3.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
-    [skill-enrichment] patched /skill menu source; 32 labels available
+    [skill-display-enrichment] v0.4.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-display-enrichment] patched /skill menu source; 32 labels available
 
-    window.__DSH_SKILL_ENRICHMENT__.report()
+    window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report()
 
 The report contains plugin version, build time, metadata hash, DSH boot version, status (starting / waiting / active / native / inactive / disposed), nativeSupport, sourceSeen, candidates type, metadata count, and the last error.
 

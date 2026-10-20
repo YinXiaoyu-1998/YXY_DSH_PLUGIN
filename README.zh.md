@@ -2,7 +2,7 @@
 
 这是尹晓宇的 **DeepSeek Harness (DSH)** 公共插件仓库。
 
-第一个插件 **skill-enrichment** 解决一个多语言可读性问题：一个 skill 的
+第一个插件 **skill-display-enrichment** 解决一个多语言可读性问题：一个 skill 的
 路由元数据可能必须保持英文（或者来自上游、不适合直接改），但 UI 上希望
 显示本地化的名称和简短说明（例如中文），方便浏览。插件读取 Codex 风格的
 agents/openai.yaml，把 label / short description 加到 DSH 的 / 技能菜单里，
@@ -12,7 +12,7 @@ agents/openai.yaml，把 label / short description 加到 DSH 的 / 技能菜单
 
 | 插件 | 用途 | 文档 |
 |---|---|---|
-| **skill-enrichment** | 用 agents/openai.yaml 在 DSH 的 / 技能菜单显示本地化名称和简述（例如中文）；带兼容性自检和版本日志。 | [README](plugins/skill-enrichment/README.md) · [DSH 功能建议](plugins/skill-enrichment/docs/dsh-feature-proposal.zh.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
+| **skill-display-enrichment** | 用 agents/openai.yaml 在 DSH 的 / 技能菜单显示本地化名称和简述（例如中文）；带兼容性自检和版本日志。 | [README](plugins/skill-display-enrichment/README.md) · [DSH 功能建议](plugins/skill-display-enrichment/docs/dsh-feature-proposal.zh.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
 
 ## 仓库结构
 
@@ -25,7 +25,7 @@ agents/openai.yaml，把 label / short description 加到 DSH 的 / 技能菜单
     │   └── adding-a-plugin.md
     └── plugins/
         ├── README.md
-        └── skill-enrichment/
+        └── skill-display-enrichment/
 
 plugins/ 下每个目录都是一个完整、可独立安装的 DSH 插件包。这个仓库是
 插件集合，不是单一 npm 包；需要哪个就安装哪个目录。
@@ -35,7 +35,7 @@ plugins/ 下每个目录都是一个完整、可独立安装的 DSH 插件包。
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
     DSH="dsh"   # 或 dsh CLI 的完整路径
-    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-enrichment"
+    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-enrichment"
 
 然后重启 profile，或在“设置 → 插件”里重新加载。
 
@@ -47,9 +47,9 @@ plugins/ 下每个目录都是一个完整、可独立安装的 DSH 插件包。
 
     npm test
 
-每个插件仍然自己负责构建和测试。以 skill-enrichment 为例：
+每个插件仍然自己负责构建和测试。以 skill-display-enrichment 为例：
 
-    cd plugins/skill-enrichment
+    cd plugins/skill-display-enrichment
     node scripts/sync-metadata.mjs
     node test/patch.test.mjs
 
