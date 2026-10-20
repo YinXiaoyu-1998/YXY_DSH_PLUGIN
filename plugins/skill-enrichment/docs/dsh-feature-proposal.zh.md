@@ -2,7 +2,7 @@
 
 状态：已发布为 DSH Ideas Discussion #10375（https://github.com/deepseek-ai/deepseek-harness/discussions/10375），基于 DSH 0.2.1-rc.2
 范围：skill 元数据、skills/list、Web 斜杠菜单
-相关：本仓库的客户端参考插件 dsh-skill-display-zh
+相关：本仓库的客户端参考插件 dsh-skill-enrichment
 
 ## 一句话
 
@@ -96,7 +96,7 @@ ui-skill 映射成：
 - 参考插件的做法：有原生字段时自动 restore 原来的 candidates，状态记为
   native，不再覆盖官方行为。
 - 版本日志：启动时打印插件版本、构建时间、metadata hash、DSH 版本、
-  覆盖数量；在 window.__DSH_SKILL_DISPLAY_ZH__.report() 里返回状态、
+  覆盖数量；在 window.__DSH_SKILL_ENRICHMENT__.report() 里返回状态、
   nativeSupport、sourceSeen、candidates 类型、错误等。
 - 失败要软：菜单源不存在或形状变了就打印警告并回退英文，不要让界面崩。
 
@@ -132,7 +132,7 @@ ui-skill 映射成：
 
 ## 参考实现状态
 
-本地有一个客户端参考插件（dsh-skill-display-zh v0.2.0）：它读取
+本地有一个客户端参考插件（dsh-skill-enrichment v0.3.0）：它读取
 agents/openai.yaml、只在没有原生字段时 patch 菜单、打印版本日志、
 暴露 report()，并在检测到原生字段时自动进入 native 状态。
 

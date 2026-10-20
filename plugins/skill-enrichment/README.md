@@ -1,6 +1,9 @@
-# dsh-skill-display-zh
+# dsh-skill-enrichment
 
-给 DSH 的 / 技能菜单补上 Codex 已有的中文显示名和中文简述。
+给 DSH 的 / 技能菜单补上 Codex 已有的本地化显示名和简述（示例为中文）。
+
+插件名不含 zh，是因为显示语言来自 agents/openai.yaml；中文只是当前的使用
+场景，任何语言都可以用同一套 metadata。
 
 ![预览](docs/preview.png)
 
@@ -18,8 +21,8 @@ storytelling-dialogue 和英文描述。
 这个插件在 Web 客户端里找到 ui-skill 注册的 / 菜单源，保留它的筛选和
 选择逻辑，只给候选项补上：
 
-- label：中文显示名
-- description：中文简述
+- label：本地化显示名（示例为中文）
+- description：本地化简述
 - name：仍然是真实 skill 名，因此选中后插入的还是 /storytelling-dialogue
 
 菜单会显示成：
@@ -36,28 +39,28 @@ storytelling-dialogue 和英文描述。
     DSH="dsh"   # 或 dsh CLI 的完整路径
 
     # 在目标 profile 里安装本地包（示例用 probe profile）
-    "$DSH" plugin --profile probe-skill-display add "$REPO/plugins/skill-display-zh"
+    "$DSH" plugin --profile probe-skill-enrichment add "$REPO/plugins/skill-enrichment"
 
     # 0.2.1-rc.2 实测 dsh plugin add 会同时写入 dependencies 和 bundles
-    # 若你的版本只写 dependencies，手动把 dsh-skill-display-zh 加进 bundles
+    # 若你的版本只写 dependencies，手动把 dsh-skill-enrichment 加进 bundles
 
     # 启动 profile
-    "$DSH" --profile probe-skill-display web
+    "$DSH" --profile probe-skill-enrichment web
 
 在 DSH Desktop 里，建议通过“设置 → 插件”安装本地目录，或把包加入
 ~/.dsh/profiles/desktop/package.json 的 dsh.profile.bundles，然后重启。
 
 ## 开启 / 关闭
 
-- 在“设置 → 插件”里启用或停用 skill-display-zh。
-- 停用后客户端模块不会加载，菜单恢复英文。
+- 在“设置 → 插件”里启用或停用 skill-enrichment。
+- 停用后客户端模块不会加载，菜单恢复原始 name / description。
 - 也可以从 profile 的 dsh.profile.bundles 中移除本包。
 
-## 更新中文文案
+## 更新显示文案
 
 新增或改名 skill 后，重新生成嵌入的元数据：
 
-    cd plugins/skill-display-zh
+    cd plugins/skill-enrichment
     node scripts/sync-metadata.mjs
 
 然后重启 profile（或让客户端 HMR 重新加载）。
@@ -66,21 +69,21 @@ storytelling-dialogue 和英文描述。
 
 插件加载时会在 Web 控制台打印一行版本日志，例如：
 
-    [skill-display-zh] v0.2.0 loaded (build 2026-10-20T04:38:15.300Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
-    [skill-display-zh] patched /skill menu source; 32 labels available
+    [skill-enrichment] v0.3.0 loaded (build 2026-10-20T04:38:15.300Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-enrichment] patched /skill menu source; 32 labels available
 
 状态有六种：
 
 - starting：apply 已开始，尚未找到菜单源
 - waiting：等待 ui-skill 注册菜单源（最多 10 秒）
-- active：已 patch，中文显示名生效
+- active：已 patch，本地化显示名生效
 - native：检测到 DSH 已经原生支持 displayName/shortDescription，插件自动停用
 - inactive：菜单源不存在或形状不兼容，插件没有生效
 - disposed：插件被卸载
 
 在浏览器控制台可以随时查看完整自检：
 
-    window.__DSH_SKILL_DISPLAY_ZH__.report()
+    window.__DSH_SKILL_ENRICHMENT__.report()
 
 它会返回插件版本、构建时间、metadata hash、DSH 版本、状态、是否检测到
 原生支持、菜单源是否存在、candidates 类型、覆盖的 skill 数量等。

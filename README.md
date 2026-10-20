@@ -2,13 +2,13 @@
 
 A small, public collection of **DeepSeek Harness (DSH)** plugins by Yin Xiaoyu.
 
-The first plugin, **skill-display-zh**, solves a multilingual readability problem: a skill's routing metadata often has to stay English (or comes from upstream and should not be edited), while the UI should show a Chinese label and short description. The plugin reads the Codex-style agents/openai.yaml and adds a Chinese label / short description to the DSH slash menu, without changing the skill id or the model-facing description.
+The first plugin, **skill-enrichment**, solves a multilingual readability problem: a skill's routing metadata often has to stay English (or comes from upstream and should not be edited), while the UI should show a localized label and short description (for example, Chinese). The plugin reads the Codex-style agents/openai.yaml and adds that presentation metadata to the DSH slash menu, without changing the skill id or the model-facing description.
 
 ## Plugins
 
 | Plugin | Purpose | Docs |
 |---|---|---|
-| **skill-display-zh** | Show Chinese display names and short descriptions in the DSH / skill menu using agents/openai.yaml. Includes compatibility self-check and version log. | [README](plugins/skill-display-zh/README.md) · [DSH proposal](plugins/skill-display-zh/docs/dsh-feature-proposal.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
+| **skill-enrichment** | Show localized display names and short descriptions in the DSH / skill menu using agents/openai.yaml. Includes compatibility self-check and version log. | [README](plugins/skill-enrichment/README.md) · [DSH proposal](plugins/skill-enrichment/docs/dsh-feature-proposal.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
 
 ## Repository layout
 
@@ -21,7 +21,7 @@ The first plugin, **skill-display-zh**, solves a multilingual readability proble
     │   └── adding-a-plugin.md
     └── plugins/
         ├── README.md
-        └── skill-display-zh/
+        └── skill-enrichment/
             ├── package.json
             ├── cordis.patch.yml
             ├── lib/
@@ -39,7 +39,7 @@ Clone the repository, then install a plugin directory into a DSH profile:
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
     DSH="dsh"   # or the full path to the dsh CLI
-    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-zh"
+    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-enrichment"
 
 Then restart the profile (or reload the plugin from Settings → Plugins).
 
@@ -51,9 +51,9 @@ Run every plugin test from the repository root:
 
     npm test
 
-Each plugin still owns its build/test commands. For skill-display-zh:
+Each plugin still owns its build/test commands. For skill-enrichment:
 
-    cd plugins/skill-display-zh
+    cd plugins/skill-enrichment
     node scripts/sync-metadata.mjs
     node test/patch.test.mjs
 

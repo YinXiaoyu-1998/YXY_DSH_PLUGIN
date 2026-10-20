@@ -50,8 +50,8 @@ const source = {
 };
 const first = context([source]);
 exports.apply(first.ctx);
-assert.equal(globalThis.window.__DSH_SKILL_DISPLAY_ZH__.status, "active");
-const diagnostic = globalThis.window.__DSH_SKILL_DISPLAY_ZH__.diagnose();
+assert.equal(globalThis.window.__DSH_SKILL_ENRICHMENT__.status, "active");
+const diagnostic = globalThis.window.__DSH_SKILL_ENRICHMENT__.diagnose();
 assert.equal(diagnostic.dshVersion, "0.2.1-rc.2");
 assert.equal(diagnostic.sourceSeen, true);
 assert.equal(diagnostic.candidates, "function");
@@ -81,7 +81,7 @@ const nativeSource = {
 const second = context([nativeSource]);
 exports.apply(second.ctx);
 const nativeItems = await nativeSource.candidates({}, { query: "story" });
-assert.equal(globalThis.window.__DSH_SKILL_DISPLAY_ZH__.status, "native");
+assert.equal(globalThis.window.__DSH_SKILL_ENRICHMENT__.status, "native");
 assert.equal(nativeItems[0].label, "Native label");
 assert.equal(nativeItems[0].description, "Native description");
 for (const dispose of second.disposers) dispose();
@@ -89,7 +89,7 @@ for (const dispose of second.disposers) dispose();
 // A late-arriving source should be patched by the bounded retry loop.
 const third = context([]);
 exports.apply(third.ctx);
-assert.equal(globalThis.window.__DSH_SKILL_DISPLAY_ZH__.status, "waiting");
+assert.equal(globalThis.window.__DSH_SKILL_ENRICHMENT__.status, "waiting");
 const lateSource = {
   trigger: "/",
   name: "skill",
@@ -97,7 +97,7 @@ const lateSource = {
 };
 third.ctx.inputTriggers.live.sources.push(lateSource);
 await new Promise((resolve) => setTimeout(resolve, 150));
-assert.equal(globalThis.window.__DSH_SKILL_DISPLAY_ZH__.status, "active");
+assert.equal(globalThis.window.__DSH_SKILL_ENRICHMENT__.status, "active");
 for (const dispose of third.disposers) dispose();
 
 console.log("patch test passed");

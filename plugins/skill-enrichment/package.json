@@ -1,14 +1,14 @@
 {
-  "name": "dsh-skill-display-zh",
-  "version": "0.2.0",
+  "name": "dsh-skill-enrichment",
+  "version": "0.3.0",
   "private": true,
   "description": "Use agents/openai.yaml display_name and short_description in the DSH skill menu, with compatibility diagnostics.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git",
-    "directory": "plugins/skill-display-zh"
+    "directory": "plugins/skill-enrichment"
   },
-  "homepage": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-zh",
+  "homepage": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-enrichment",
   "bugs": {
     "url": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/issues"
   },
