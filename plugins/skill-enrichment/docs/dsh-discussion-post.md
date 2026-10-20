@@ -61,6 +61,8 @@ The reference plugin is public:
 
 The plugin reads agents/openai.yaml at build time, patches the ui-skill candidates method only while native display fields are absent, and restores the original method when native fields appear.
 
+The plugin was originally named skill-display-zh; it was renamed to skill-enrichment in v0.3.0 because the display language is data, not part of the plugin.
+
 It also implements the diagnostics described below. The core patch is a design sketch at this point, not a CI-verified PR; the client-side reference is the part exercised against 0.2.1-rc.2.
 
 ## Compatibility and diagnostics

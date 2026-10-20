@@ -5,6 +5,9 @@
 插件名不含 zh，是因为显示语言来自 agents/openai.yaml；中文只是当前的使用
 场景，任何语言都可以用同一套 metadata。
 
+历史：v0.2.0 之前叫 skill-display-zh；v0.3.0 改名为 skill-enrichment，
+因为“zh”把显示语言写进了插件名，而实际语言由 metadata 决定。
+
 ![预览](docs/preview.png)
 
 ## 它做什么
