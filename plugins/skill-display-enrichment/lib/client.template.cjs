@@ -11,7 +11,7 @@ window.__ModuleLoader__.load({
 
     const inject = ["inputTriggers"];
     const SOURCE = { trigger: "/", name: "skill" };
-    const MARK = "__dsh_skill_display_zh__";
+    const MARK = "__dsh_skill_display_enrichment__";
 
     const state = {
       status: "starting",
@@ -38,11 +38,7 @@ window.__ModuleLoader__.load({
     }
 
     function counts() {
-      const names = Object.keys(META);
-      return {
-        metadataCount: names.length,
-        storytellingCount: names.filter((name) => name.indexOf("storytelling-") === 0).length
-      };
+      return { metadataCount: Object.keys(META).length };
     }
 
     function findSource(service) {
@@ -69,7 +65,6 @@ window.__ModuleLoader__.load({
         sourceSeen: source !== undefined,
         candidates: source ? typeof source.candidates : "missing",
         metadataCount: c.metadataCount,
-        storytellingCount: c.storytellingCount,
         error: state.error
       };
     }
@@ -113,7 +108,7 @@ window.__ModuleLoader__.load({
       const c = counts();
       log(
         "v" + BUILD.version + " loaded (build " + BUILD.builtAt + ", hash " + BUILD.metadataHash + "); " +
-        "DSH " + dshVersion() + "; " + c.metadataCount + " labels (" + c.storytellingCount + " storytelling)"
+        "DSH " + dshVersion() + "; " + c.metadataCount + " labels"
       );
       if (dshVersion() !== "unknown" && dshVersion().indexOf("0.2.") !== 0) {
         log("note: this build targets DSH 0.2.x; running " + dshVersion() + " - verify the menu shape");

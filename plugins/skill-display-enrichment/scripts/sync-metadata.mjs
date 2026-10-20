@@ -54,7 +54,6 @@ const build = {
   builtAt: new Date().toISOString(),
   metadataHash: createHash("sha256").update(json).digest("hex").slice(0, 12),
   metadataCount: names.length,
-  storytellingCount: names.filter((name) => name.indexOf("storytelling-") === 0).length
 };
 
 writeFileSync(outputPath, json + "\n", "utf8");
@@ -69,6 +68,6 @@ const client = template
   .replace("__BUILD_INFO__", JSON.stringify(build, null, 2));
 writeFileSync(clientPath, client, "utf8");
 console.log(
-  "synced " + build.metadataCount + " skills (" + build.storytellingCount + " storytelling), " +
+  "synced " + build.metadataCount + " skills, " +
   "hash " + build.metadataHash
 );

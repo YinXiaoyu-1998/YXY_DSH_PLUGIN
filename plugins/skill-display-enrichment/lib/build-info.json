@@ -1,8 +1,7 @@
 {
   "plugin": "dsh-skill-display-enrichment",
   "version": "0.4.0",
-  "builtAt": "2026-10-20T05:00:52.716Z",
+  "builtAt": "2026-10-20T05:05:10.207Z",
   "metadataHash": "4439d703fabd",
-  "metadataCount": 32,
-  "storytellingCount": 13
+  "metadataCount": 32
 }

@@ -19,8 +19,8 @@ DSH skill catalogs are increasingly used by non-English authors. Codex already s
 
     agents/openai.yaml
     interface:
-      display_name: "Storytelling · 对白与潜台词"
-      short_description: "改善生硬或人物声音雷同的对白……"
+      display_name: "代码审查"
+      short_description: "审查变更的正确性、边界条件和安全风险。"
 
 DSH currently reads only SKILL.md frontmatter **name** and **description**. The Web slash menu therefore shows the English id and English description even when the author maintains Chinese metadata. Users must remember English ids, and the visible catalog does not match the localized skill documentation.
 
@@ -55,10 +55,10 @@ Both are optional. Empty strings are treated as absent. No existing provider is 
 Primary source:
 
     ---
-    name: storytelling-dialogue
-    description: Diagnose flat dialogue, same-voice characters, and lack of subtext.
-    displayName: "Storytelling · 对白与潜台词"
-    shortDescription: "改善生硬或人物声音雷同的对白，增加潜台词与角色辨识度。"
+    name: code-review
+    description: Review a change for correctness, edge cases, and security risks.
+    displayName: "代码审查"
+    shortDescription: "审查变更的正确性、边界条件和安全风险。"
     ---
 
 Support both camelCase and snake_case spellings during a transition:
@@ -116,7 +116,7 @@ The reference client plugin in this repository demonstrates this behavior. It pa
 
 The reference plugin logs one line at startup and exposes a debug object:
 
-    [skill-display-enrichment] v0.4.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-display-enrichment] v0.4.0 loaded (build ..., hash ...); DSH 0.2.1-rc.2; 32 labels
     [skill-display-enrichment] patched /skill menu source; 32 labels available
 
     window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report()
@@ -129,7 +129,7 @@ The report includes:
 - native support detected
 - menu source present
 - candidates type
-- metadata count and storytelling count
+- metadata count
 - last error
 
 The same pattern is recommended for any compatibility plugin:

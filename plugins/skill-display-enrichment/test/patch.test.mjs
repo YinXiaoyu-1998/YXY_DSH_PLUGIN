@@ -55,7 +55,6 @@ const diagnostic = globalThis.window.__DSH_SKILL_DISPLAY_ENRICHMENT__.diagnose()
 assert.equal(diagnostic.dshVersion, "0.2.1-rc.2");
 assert.equal(diagnostic.sourceSeen, true);
 assert.equal(diagnostic.candidates, "function");
-assert.equal(diagnostic.storytellingCount, 13);
 assert.ok(diagnostic.metadataCount >= 13);
 
 const items = await source.candidates({}, { query: "story" });

@@ -18,11 +18,11 @@
 Codex 已经支持 agents/openai.yaml：
 
     interface:
-      display_name: "Storytelling · 对白与潜台词"
-      short_description: "改善生硬或人物声音雷同的对白……"
+      display_name: "代码审查"
+      short_description: "审查变更的正确性、边界条件和安全风险。"
 
 DSH 目前只读 SKILL.md 的 name 和 description，所以菜单里显示
-storytelling-dialogue 和英文描述。中文作者必须记住英文 id，界面和
+code-review 和英文描述。用户必须记住英文 id，界面和
 本地化文档也对不上。
 
 这不是要把模型路由文本中文化，而是把两类元数据分开：
@@ -55,10 +55,10 @@ SkillSummary / SkillDefinition 增加可选字段：
 ### 2. SKILL.md
 
     ---
-    name: storytelling-dialogue
-    description: Diagnose flat dialogue...
-    displayName: "Storytelling · 对白与潜台词"
-    shortDescription: "改善生硬或人物声音雷同的对白……"
+    name: code-review
+    description: Review a change for correctness, edge cases, and security risks.
+    displayName: "代码审查"
+    shortDescription: "审查变更的正确性、边界条件和安全风险。"
     ---
 
 过渡期同时接受 display_name / short_description；两者都有且不一致时，

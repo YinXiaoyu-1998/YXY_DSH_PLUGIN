@@ -25,7 +25,7 @@ Only active changes visible behavior. native and inactive are intentional no-ops
 
 One line at startup:
 
-    [skill-display-enrichment] v0.4.0 loaded (build 2026-10-20T05:00:52.716Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels (13 storytelling)
+    [skill-display-enrichment] v0.4.0 loaded (build 2026-10-20T05:05:10.207Z, hash 4439d703fabd); DSH 0.2.1-rc.2; 32 labels
 
 The fields are:
 
@@ -34,7 +34,7 @@ The fields are:
 - metadata hash (first 12 hex chars of SHA-256 over the generated metadata JSON)
 - DSH boot version from window.__DSH_BOOT__.version (or unknown)
 - number of embedded labels
-- number of storytelling labels
+- number of labels
 
 A second line reports the outcome:
 
@@ -56,7 +56,7 @@ It returns a JSON string with:
     {
       "plugin": "dsh-skill-display-enrichment",
       "version": "0.4.0",
-      "builtAt": "2026-10-20T05:00:52.716Z",
+      "builtAt": "2026-10-20T05:05:10.207Z",
       "metadataHash": "4439d703fabd",
       "dshVersion": "0.2.1-rc.2",
       "status": "active",
@@ -66,7 +66,6 @@ It returns a JSON string with:
       "sourceSeen": true,
       "candidates": "function",
       "metadataCount": 32,
-      "storytellingCount": 13,
       "error": null
     }
 
