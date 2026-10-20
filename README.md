@@ -8,7 +8,7 @@ The first plugin, **skill-display-zh**, solves a multilingual readability proble
 
 | Plugin | Purpose | Docs |
 |---|---|---|
-| **skill-display-zh** | Show Chinese display names and short descriptions in the DSH / skill menu using agents/openai.yaml. Includes compatibility self-check and version log. | [README](plugins/skill-display-zh/README.md) · [DSH proposal](plugins/skill-display-zh/docs/dsh-feature-proposal.md) |
+| **skill-display-zh** | Show Chinese display names and short descriptions in the DSH / skill menu using agents/openai.yaml. Includes compatibility self-check and version log. | [README](plugins/skill-display-zh/README.md) · [DSH proposal](plugins/skill-display-zh/docs/dsh-feature-proposal.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
 
 ## Repository layout
 

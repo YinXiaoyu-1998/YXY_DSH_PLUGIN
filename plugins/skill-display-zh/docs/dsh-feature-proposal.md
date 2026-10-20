@@ -1,6 +1,6 @@
 # Proposal: first-class localized skill display metadata
 
-Status: discussion draft, DSH 0.2.1-rc.2
+Status: published as DSH Ideas discussion #10375 (https://github.com/deepseek-ai/deepseek-harness/discussions/10375), based on DSH 0.2.1-rc.2
 Scope: skill catalog metadata, skills/list transport, Web slash-menu rendering
 Related: public reference plugin at https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/skill-display-zh
 

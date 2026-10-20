@@ -12,7 +12,7 @@ agents/openai.yaml，把中文 label / short description 加到 DSH 的 / 技能
 
 | 插件 | 用途 | 文档 |
 |---|---|---|
-| **skill-display-zh** | 用 agents/openai.yaml 在 DSH 的 / 技能菜单显示中文名称和简述；带兼容性自检和版本日志。 | [README](plugins/skill-display-zh/README.md) · [DSH 功能建议](plugins/skill-display-zh/docs/dsh-feature-proposal.zh.md) |
+| **skill-display-zh** | 用 agents/openai.yaml 在 DSH 的 / 技能菜单显示中文名称和简述；带兼容性自检和版本日志。 | [README](plugins/skill-display-zh/README.md) · [DSH 功能建议](plugins/skill-display-zh/docs/dsh-feature-proposal.zh.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
 
 ## 仓库结构
 

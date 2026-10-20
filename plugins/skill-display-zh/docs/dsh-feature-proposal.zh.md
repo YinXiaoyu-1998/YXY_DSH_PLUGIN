@@ -1,6 +1,6 @@
 # 功能建议：给 skill 增加本地化显示元数据
 
-状态：讨论稿，基于 DSH 0.2.1-rc.2
+状态：已发布为 DSH Ideas Discussion #10375（https://github.com/deepseek-ai/deepseek-harness/discussions/10375），基于 DSH 0.2.1-rc.2
 范围：skill 元数据、skills/list、Web 斜杠菜单
 相关：本仓库的客户端参考插件 dsh-skill-display-zh
 

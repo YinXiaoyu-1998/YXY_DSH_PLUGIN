@@ -1,5 +1,7 @@
 # [Feature] Skill display metadata: displayName / shortDescription for localized catalogs
 
+Posted: https://github.com/deepseek-ai/deepseek-harness/discussions/10375
+
 ## Original motivation
 
 I have English skills whose routing text should stay English (or whose text comes from upstream and should not be edited), but I want the UI to show a Chinese label and a short Chinese description so I can scan the catalog without translating the ids in my head.

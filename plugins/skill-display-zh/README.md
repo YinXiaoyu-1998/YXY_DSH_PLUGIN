@@ -104,6 +104,7 @@ DSH 升级替换应用包，不会删除用户 profile 的插件目录或本地�
 
 ## 相关文档
 
+- [DSH Ideas Discussion #10375](https://github.com/deepseek-ai/deepseek-harness/discussions/10375)
 - [给 DSH 的功能建议（英文）](docs/dsh-feature-proposal.md)
 - [给 DSH 的功能建议（中文）](docs/dsh-feature-proposal.zh.md)
 - [GitHub Discussion 草稿](docs/dsh-discussion-post.md)
