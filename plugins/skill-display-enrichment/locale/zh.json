@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "技能菜单显示名与简述",
+    "description": "把每个 skill 的 agents/openai.yaml 里的 display_name 和 short_description 显示到 DSH 的 / 技能菜单里，同时保留真实 skill 名用于路由。菜单行因此显示为「本地化名称 + 简短说明」，而不是裸 id 加英文描述；选中后插入的仍然是原来的 /skill-name。插件带兼容性自检：若某个 DSH 版本已经原生支持显示名，它会自动保持空闲；window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report() 可查看当前菜单源、DSH 版本与元数据条数。文案来自 skill 文件本身，改完 yaml 重跑 scripts/sync-metadata.mjs 即可更新菜单，无需改插件代码。"
+  }
+}

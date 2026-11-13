@@ -26,9 +26,11 @@ The first plugin, **skill-display-enrichment**, solves a multilingual readabilit
         │   ├── package.json
         │   ├── cordis.patch.yml
         │   ├── lib/
+        │   ├── locale/
         │   ├── scripts/
         │   ├── test/
         │   ├── docs/
+        │   ├── LICENSE
         │   └── README.md
         └── workspace-collapse-all/
             ├── package.json
@@ -37,22 +39,30 @@ The first plugin, **skill-display-enrichment**, solves a multilingual readabilit
             ├── locale/
             ├── icon.svg
             ├── test/
+            ├── LICENSE
             └── README.md
 
 Each directory under plugins/ is a self-contained DSH plugin package. The repository is a collection, not a single package: install the plugin directory you need.
 
 ## Install
 
-Clone the repository, then install a plugin directory into a DSH profile:
+Every plugin here is published to npm, so a package name is enough:
+
+    DSH="dsh"   # or the full path to the dsh CLI
+    "$DSH" plugin --profile your-profile add dsh-skill-display-enrichment
+    "$DSH" plugin --profile your-profile add dsh-workspace-collapse-all
+
+Then restart the profile (or reload the plugin from Settings → Plugins). In DSH
+Desktop, Plugins → Add plugin also accepts the package name.
+
+For development, install the plugin directory instead — a local directory
+install links the checkout, so edits take effect immediately:
 
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
-    DSH="dsh"   # or the full path to the dsh CLI
-    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-enrichment"
+    "$DSH" plugin --profile probe-topic add "$PWD/plugins/skill-display-enrichment"
 
-Then restart the profile (or reload the plugin from Settings → Plugins).
-
-The plugin is not published to npm. The repository is the distribution channel.
+Both packages are MIT and published to registry.npmjs.org.
 
 ## Development
 

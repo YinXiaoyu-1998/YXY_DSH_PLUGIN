@@ -46,11 +46,17 @@ DSH 0.2.x 里，`工作区` 标题行（搜索 / 筛选 / 新建那一行）由
 
 ## 安装
 
-打包为 bundle，`cordis.patch.yml` 插入一行 Host 插件；界面全在 web 客户端
-（`lib/client.cjs`），Host 侧是空实现。
+从 npm 安装（推荐）：
 
-- 设置页 **插件 → 添加插件**，选择本目录（本地目录安装会直接链接本仓库）；
-- 或在启用了 `plugin_manager` 权限的会话里，用工作区绝对路径安装本目录。
+    dsh plugin --profile your-profile add dsh-workspace-collapse-all
+
+或在 DSH Desktop 的“设置 → 插件 → 添加插件”里填包名。
+
+打包形态：`cordis.patch.yml` 插入一行 Host 插件；界面全在 web 客户端
+（`lib/client.cjs`），Host 侧是空实现。开发时也可以用本地目录（会直接 link 仓库，
+改动即时生效）：
+
+    dsh plugin --profile probe-collapse add "$PWD/plugins/workspace-collapse-all"
 
 启用后无需重启即可通过 HMR 生效；若替换了同名包的新版本，需要重启一次加载新的客户端模块。
 

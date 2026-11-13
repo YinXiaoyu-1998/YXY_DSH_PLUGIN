@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Skill display enrichment",
+    "description": "Shows display_name and short_description from each skill's agents/openai.yaml in the DSH slash menu, keeping the real skill name for routing. The menu row then reads as a localized label plus a short summary instead of a raw id and an English description. Pick a row and the composer still inserts the original /skill-name. Includes a compatibility self-check: when a DSH release already exposes display names, the plugin detects it and stays idle, and the window.__DSH_SKILL_DISPLAY_ENRICHMENT__.report() diagnostic shows the current source, DSH version and metadata count. Labels come from the skill files themselves, so updating a skill's yaml and rerunning scripts/sync-metadata.mjs changes the menu without touching the plugin."
+  }
+}

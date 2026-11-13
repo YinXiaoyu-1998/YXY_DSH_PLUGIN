@@ -26,21 +26,32 @@ agents/openai.yaml，把 label / short description 加到 DSH 的 / 技能菜单
     │   └── adding-a-plugin.md
     └── plugins/
         ├── README.md
-        └── skill-display-enrichment/
+        ├── skill-display-enrichment/
+        │   └── …（lib/ locale/ docs/ test/ LICENSE）
+        └── workspace-collapse-all/
+            └── …（lib/ locale/ test/ icon.svg LICENSE）
 
 plugins/ 下每个目录都是一个完整、可独立安装的 DSH 插件包。这个仓库是
 插件集合，不是单一 npm 包；需要哪个就安装哪个目录。
 
 ## 安装
 
+每个插件都发布在 npm 上，按包名安装即可：
+
+    DSH="dsh"   # 或 dsh CLI 的完整路径
+    "$DSH" plugin --profile your-profile add dsh-skill-display-enrichment
+    "$DSH" plugin --profile your-profile add dsh-workspace-collapse-all
+
+然后重启 profile，或在“设置 → 插件”里重新加载。DSH Desktop 里也可以用
+“设置 → 插件 → 添加插件”直接填包名。
+
+开发时改用本地目录安装（会直接 link 仓库，改动即时生效）：
+
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
-    DSH="dsh"   # 或 dsh CLI 的完整路径
-    "$DSH" plugin --profile your-profile add "$PWD/plugins/skill-display-enrichment"
+    "$DSH" plugin --profile probe-topic add "$PWD/plugins/skill-display-enrichment"
 
-然后重启 profile，或在“设置 → 插件”里重新加载。
-
-插件没有发布到 npm；GitHub 仓库就是分发渠道。
+两个包都是 MIT，发布在 registry.npmjs.org。
 
 ## 开发
 
