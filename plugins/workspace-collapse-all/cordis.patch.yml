@@ -1,0 +1,3 @@
+- insert:
+    - id: workspace-collapse-all
+      name: "dsh-workspace-collapse-all"

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Collapse all workspaces",
+    "description": "Adds one persistent entry above the sidebar's account row for the whole workspace list. While any workspace group is open it reads Collapse all and closes every group; once all are closed it reads Expand all and opens every group, including nested folders. The click drives the sidebar's own group rows, so the built-in animation runs and the open/closed state stays in the sidebar's saved view. The entry is hidden while the sidebar is collapsed to its rail and disabled when the current view has no workspace rows, such as the flat list or an active session search. Limitations: it depends on the sidebar's workspace-row markup and its visible group headers, so a DSH release that changes those rows disables the button instead of guessing."
+  }
+}

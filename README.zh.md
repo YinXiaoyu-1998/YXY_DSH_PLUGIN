@@ -13,6 +13,7 @@ agents/openai.yaml，把 label / short description 加到 DSH 的 / 技能菜单
 | 插件 | 用途 | 文档 |
 |---|---|---|
 | **skill-display-enrichment** | 用 agents/openai.yaml 在 DSH 的 / 技能菜单显示本地化名称和简述（例如中文）；带兼容性自检和版本日志。 | [README](plugins/skill-display-enrichment/README.md) · [DSH 功能建议](plugins/skill-display-enrichment/docs/dsh-feature-proposal.zh.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
+| **workspace-collapse-all** | 在侧栏账号行上方加一个入口，一键收起 / 展开所有工作区（项目），保留原生展开动画与视图状态。 | [README](plugins/workspace-collapse-all/README.md) |
 
 ## 仓库结构
 
