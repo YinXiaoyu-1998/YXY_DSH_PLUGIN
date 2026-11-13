@@ -40,24 +40,28 @@ displayName 不一定是翻译：例如原始 skill 是 code-review，菜单可�
 
 ## 安装
 
-这个包通过 GitHub 仓库分发，不发布到 npm：
+从 npm 安装（推荐）：
+
+    DSH="dsh"   # 或 dsh CLI 的完整路径
+    "$DSH" plugin --profile your-profile add dsh-skill-display-enrichment
+    "$DSH" --profile your-profile web
+
+在 DSH Desktop 里也可以走“设置 → 插件 → 添加插件”，填包名
+`dsh-skill-display-enrichment`。
+
+开发时用本地目录（会直接 link 仓库，改动即时生效）：
 
     git clone https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git
     cd YXY_DSH_PLUGIN
-    REPO="$PWD"
-    DSH="dsh"   # 或 dsh CLI 的完整路径
+    DSH="dsh"
 
-    # 在目标 profile 里安装本地包（示例用 probe profile）
-    "$DSH" plugin --profile probe-skill-display-enrichment add "$REPO/plugins/skill-display-enrichment"
+    # 示例用一次性 probe profile
+    "$DSH" plugin --profile probe-skill-display-enrichment add "$PWD/plugins/skill-display-enrichment"
 
     # 0.2.1-rc.2 实测 dsh plugin add 会同时写入 dependencies 和 bundles
     # 若你的版本只写 dependencies，手动把 dsh-skill-display-enrichment 加进 bundles
 
-    # 启动 profile
     "$DSH" --profile probe-skill-display-enrichment web
-
-在 DSH Desktop 里，建议通过“设置 → 插件”安装本地目录，或把包加入
-~/.dsh/profiles/desktop/package.json 的 dsh.profile.bundles，然后重启。
 
 ## 开启 / 关闭
 

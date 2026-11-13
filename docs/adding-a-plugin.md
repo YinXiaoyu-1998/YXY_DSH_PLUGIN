@@ -88,7 +88,26 @@ At minimum:
 
 Delete the probe profile after testing. Do not edit the desktop profile until the probe passes.
 
-## 8. Update the repository docs
+## 8. Publish to npm
+
+The tarball is the distribution artifact, so validate the packed list, not the
+checkout:
+
+    cd plugins/purpose
+    npm test
+    npm pack --dry-run        # confirm lib/, locale/, icon.svg, LICENSE, patch
+    npm publish               # publishConfig pins registry.npmjs.org
+
+Then install the *package name* in a throwaway profile and delete that profile:
+
+    dsh --profile probe-publish --from-default-profile headless --dump-config
+    dsh plugin --profile probe-publish add dsh-purpose
+    dsh --profile probe-publish --dump-config | grep dsh-purpose
+    rm -rf ~/.dsh/profiles/probe-publish
+
+A version on npm cannot be overwritten: bump `version` for any change.
+
+## 9. Update the repository docs
 
 - Add the plugin to README.md and README.zh.md.
 - Add it to plugins/README.md.
