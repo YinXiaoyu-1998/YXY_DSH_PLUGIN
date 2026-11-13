@@ -1,7 +1,6 @@
 {
   "name": "dsh-workspace-collapse-all",
   "version": "0.1.0",
-  "private": true,
   "description": "Collapse or expand every workspace group in the DSH sidebar from one persistent entry above the account row.",
   "repository": {
     "type": "git",
@@ -32,7 +31,8 @@
     "locale/*.json",
     "cordis.patch.yml",
     "icon.svg",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "test": "node test/client.test.mjs"
@@ -54,8 +54,16 @@
     "@deepseek-ai/dsh-client-ui-sidebar": ">=0.2.0-rc.1 <0.3.0"
   },
   "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
     "@deepseek-ai/dsh-client-ui-sidebar": {
       "optional": true
     }
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }
