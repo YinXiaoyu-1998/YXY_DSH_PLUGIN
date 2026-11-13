@@ -1,0 +1,61 @@
+{
+  "name": "dsh-workspace-collapse-all",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Collapse or expand every workspace group in the DSH sidebar from one persistent entry above the account row.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN.git",
+    "directory": "plugins/workspace-collapse-all"
+  },
+  "homepage": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/tree/main/plugins/workspace-collapse-all",
+  "bugs": {
+    "url": "https://github.com/YinXiaoyu-1998/YXY_DSH_PLUGIN/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "sidebar",
+    "workspace"
+  ],
+  "type": "module",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./client": "./lib/client.cjs",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/client.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.0",
+    "@deepseek-ai/dsh-client-ui-sidebar": ">=0.2.0-rc.1 <0.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-client-ui-sidebar": {
+      "optional": true
+    }
+  }
+}

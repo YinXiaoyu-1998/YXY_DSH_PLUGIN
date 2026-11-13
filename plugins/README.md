@@ -36,3 +36,4 @@ The directory name and package name do not have to be identical, but keeping the
 | Directory | Package | Purpose |
 |---|---|---|
 | skill-display-enrichment | dsh-skill-display-enrichment | Localized display names / short descriptions in the DSH / skill menu. |
+| workspace-collapse-all | dsh-workspace-collapse-all | Collapse or expand every sidebar workspace group from one footer entry. |

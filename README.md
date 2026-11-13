@@ -9,6 +9,7 @@ The first plugin, **skill-display-enrichment**, solves a multilingual readabilit
 | Plugin | Purpose | Docs |
 |---|---|---|
 | **skill-display-enrichment** | Show localized display names and short descriptions in the DSH / skill menu using agents/openai.yaml. Includes compatibility self-check and version log. | [README](plugins/skill-display-enrichment/README.md) · [DSH proposal](plugins/skill-display-enrichment/docs/dsh-feature-proposal.md) · [Discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/10375) |
+| **workspace-collapse-all** | Collapse or expand every workspace group in the sidebar from one entry above the account row. Keeps the native expand animation and saved view state. | [README](plugins/workspace-collapse-all/README.md) |
 
 ## Repository layout
 
@@ -21,13 +22,21 @@ The first plugin, **skill-display-enrichment**, solves a multilingual readabilit
     │   └── adding-a-plugin.md
     └── plugins/
         ├── README.md
-        └── skill-display-enrichment/
+        ├── skill-display-enrichment/
+        │   ├── package.json
+        │   ├── cordis.patch.yml
+        │   ├── lib/
+        │   ├── scripts/
+        │   ├── test/
+        │   ├── docs/
+        │   └── README.md
+        └── workspace-collapse-all/
             ├── package.json
             ├── cordis.patch.yml
             ├── lib/
-            ├── scripts/
+            ├── locale/
+            ├── icon.svg
             ├── test/
-            ├── docs/
             └── README.md
 
 Each directory under plugins/ is a self-contained DSH plugin package. The repository is a collection, not a single package: install the plugin directory you need.
