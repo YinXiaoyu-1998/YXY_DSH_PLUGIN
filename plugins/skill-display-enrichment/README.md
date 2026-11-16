@@ -1,5 +1,7 @@
 # dsh-skill-display-enrichment
 
+> 本文档为中文。仓库总览与语言切换：[English](../../README.md) · [中文](../../README.zh.md) · [日本語](../../README.ja.md)
+
 给 DSH 的 / 技能菜单补上 Codex 已有的本地化显示名和简述（示例为中文）。
 
 插件名不含 zh，是因为显示语言来自 agents/openai.yaml；中文只是当前的使用
