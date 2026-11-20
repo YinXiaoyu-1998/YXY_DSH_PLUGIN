@@ -31,7 +31,7 @@ dsh-workspace-collapse-all
 
 安装后重启 DSH 或重新加载插件列表；如果按钮没出现，刷新一次页面（⌘R）。
 
-想固定版本就在包名后加版本号，例如 `dsh-workspace-collapse-all@0.1.3`。
+想固定版本就在包名后加版本号，例如 `dsh-workspace-collapse-all@0.1.4`。
 用中国大陆镜像源安装时，镜像可能比 npm 慢、最新版指向旧版本，需要最新版请把安装源切到官方源。
 
 ## 卸载 / 停用

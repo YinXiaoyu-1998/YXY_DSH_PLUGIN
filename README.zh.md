@@ -39,7 +39,7 @@
 | skill-display-enrichment | `dsh-skill-display-enrichment` | [![npm](https://img.shields.io/npm/v/dsh-skill-display-enrichment?color=CB3837&logo=npm)](https://www.npmjs.com/package/dsh-skill-display-enrichment) |
 
 两个包都在 npm 上，MIT 许可。想固定某个版本，在包名后面加版本号即可，例如
-`dsh-workspace-collapse-all@0.1.3`。
+`dsh-workspace-collapse-all@0.1.4`。
 
 **用中国大陆镜像源安装时注意：** 镜像可能比 npm 慢几分钟到几小时，它的“最新版”也可能
 仍指向旧版本。需要最新版时，把安装源切到官方源，或者直接写死版本号。

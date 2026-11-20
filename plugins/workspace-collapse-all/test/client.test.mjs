@@ -260,7 +260,7 @@ assert.equal(inert.clicks, 1);
 assert.deepEqual(api.summarize(), { total: 1, expanded: 1 });
 
 const report = JSON.parse(api.report());
-assert.equal(report.version, "0.1.3");
+assert.equal(report.version, "0.1.4");
 assert.equal(report.lastError, "no-effect");
 
 const styleDisposer = first.effects[1];

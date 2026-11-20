@@ -39,7 +39,7 @@
 | skill-display-enrichment | `dsh-skill-display-enrichment` | [![npm](https://img.shields.io/npm/v/dsh-skill-display-enrichment?color=CB3837&logo=npm)](https://www.npmjs.com/package/dsh-skill-display-enrichment) |
 
 Both packages live on npm under the MIT license. To stay on a specific release, add the
-version to the name, for example `dsh-workspace-collapse-all@0.1.3`.
+version to the name, for example `dsh-workspace-collapse-all@0.1.4`.
 
 **If you install from the mainland China mirror:** it can trail npm by minutes to hours, and
 its "latest" may still point at an older release. When you need the newest version, switch

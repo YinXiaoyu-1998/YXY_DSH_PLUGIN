@@ -39,7 +39,7 @@
 | skill-display-enrichment | `dsh-skill-display-enrichment` | [![npm](https://img.shields.io/npm/v/dsh-skill-display-enrichment?color=CB3837&logo=npm)](https://www.npmjs.com/package/dsh-skill-display-enrichment) |
 
 どちらも npm 上の MIT ライセンスのパッケージです。特定のリリースに固定したい場合は、
-`dsh-workspace-collapse-all@0.1.3` のようにバージョンを付けます。
+`dsh-workspace-collapse-all@0.1.4` のようにバージョンを付けます。
 
 **中国大陸のミラーを使う場合:** ミラーは npm より数分から数時間遅れることがあり、
 「最新」が古いリリースを指したままの場合もあります。最新版が必要なときはインストール元を

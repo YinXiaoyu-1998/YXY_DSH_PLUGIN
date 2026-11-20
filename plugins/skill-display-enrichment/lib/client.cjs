@@ -138,7 +138,7 @@ window.__ModuleLoader__.load({
 };
     const BUILD = {
   "plugin": "dsh-skill-display-enrichment",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "builtAt": "2026-10-20T05:05:10.207Z",
   "metadataHash": "4439d703fabd",
   "metadataCount": 32
