@@ -67,8 +67,8 @@ dsh plugin --profile probe-topic add "$PWD/plugins/workspace-collapse-all"
 ### workspace-collapse-all
 
 `sidebar.footer.action`（アカウント行の上）に**アイコンのみ**の常設項目を追加します。配置は
-`ds-harness-remote` の項目に合わせており、36px の行、36×36 のヒット領域、8px の角丸、
-同じホバー／フォーカスの扱いです。
+`ds-harness-remote` の項目に合わせており、36px のセルと `margin:4px 2px`、42px の行、
+36×36 のヒット領域、`--dsw-radius-md` の角丸、同じホバー／フォーカスの扱いです。
 
 - いずれかのワークスペースが開いているときは二重シェブロンが上向きで、クリックするとすべて閉じます。
 - すべて閉じているときは下向きになり、クリックすると入れ子のフォルダも 1 階層ずつ開きます。

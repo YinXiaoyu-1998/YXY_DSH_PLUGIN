@@ -67,8 +67,8 @@ dsh plugin --profile probe-topic add "$PWD/plugins/workspace-collapse-all"
 ### workspace-collapse-all
 
 Adds one icon-only entry to `sidebar.footer.action`, above the account row, laid out like
-the `ds-harness-remote` entry: a 36 px cell, a 36×36 hit area, an 8 px radius, the same
-hover and focus treatments.
+the `ds-harness-remote` entry: a 36 px cell with 4 px / 2 px margins inside a 42 px footer
+row, a 36×36 hit area, the `--dsw-radius-md` radius, the same hover and focus treatments.
 
 - a double chevron points up while any workspace is open; clicking closes every group;
 - once all are closed the chevron points down and clicking opens every group, walking

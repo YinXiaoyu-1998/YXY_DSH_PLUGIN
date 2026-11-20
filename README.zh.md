@@ -64,7 +64,8 @@ dsh plugin --profile probe-topic add "$PWD/plugins/workspace-collapse-all"
 ### workspace-collapse-all
 
 在 `sidebar.footer.action`（账号行上方）加一个**纯图标**常驻入口，排版与 `ds-harness-remote`
-的入口一致：36px 行、36×36 命中区、8px 圆角，悬停与聚焦处理相同。
+的入口一致：36px 单元格 + `margin:4px 2px`，42px 行高、36×36 命中区、`--dsw-radius-md`
+圆角，悬停与聚焦处理相同。
 
 - 有项目展开时双 chevron 向上，点一下全部收起；
 - 全部收起后 chevron 向下，点一下逐层展开（含嵌套文件夹）；
