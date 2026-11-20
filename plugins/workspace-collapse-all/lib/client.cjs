@@ -20,7 +20,7 @@ window.__ModuleLoader__.load({
     const React = require("react");
     const h = React.createElement;
 
-    const VERSION = "0.1.0";
+    const VERSION = "0.1.2";
     const NS = "workspace-collapse-all";
     const STYLE_ID = "dsh-workspace-collapse-all-style";
     /** The browser renders every group header with this key prefix. */
@@ -174,14 +174,17 @@ window.__ModuleLoader__.load({
     }
 
     const CSS = [
-      ".dshwca-entry{box-sizing:border-box;position:relative;flex:0 1 auto;display:flex;align-items:center;min-width:36px;max-width:100%;height:36px;margin:0}",
-      ".dshwca-button{box-sizing:border-box;display:flex;align-items:center;gap:6px;width:auto;max-width:100%;min-width:0;height:36px;min-height:36px;margin:0;padding:0 8px;border:0;border-radius:8px;background:transparent;color:var(--dsw-alias-label-primary);font:inherit;font-size:14px;line-height:20px;text-align:start;cursor:pointer}",
+      // Geometry mirrors the ds-harness-remote footer entry as shipped in 0.6.x:
+      // a 36px cell with 4px/2px margins inside a 42px footer row, a 36px hit
+      // area and the host radius token. No label: the state lives in the icon,
+      // title and aria-label.
+      ".dshwca-entry{box-sizing:border-box;position:relative;flex:none;display:flex;align-items:center;justify-content:center;width:36px;min-width:36px;max-width:100%;height:42px;margin:4px 2px}",
+      ".dshwca-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:36px;height:36px;min-height:36px;margin:0;padding:0;border:0;border-radius:var(--dsw-radius-md,12px);background:transparent;color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer}",
       ".dshwca-button:hover{background:var(--dsw-alias-interactive-bg-hover)}",
       ".dshwca-button:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-2px}",
       ".dshwca-button[aria-disabled=\"true\"]{opacity:.45;cursor:default}",
       ".dshwca-button[aria-disabled=\"true\"]:hover{background:transparent}",
       ".dshwca-icon{box-sizing:border-box;flex:0 0 16px;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;color:var(--dsw-alias-label-secondary)}",
-      ".dshwca-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}",
       ".dshwca-status{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;white-space:nowrap;clip:rect(0 0 0 0);clip-path:inset(50%)}",
     ].join("");
 
@@ -303,23 +306,19 @@ window.__ModuleLoader__.load({
       const t = typeof props.t === "function" ? props.t : (key) => key;
       const summary = useWorkspaceSummary();
       const [busy, setBusy] = React.useState(false);
-      const [frozen, setFrozen] = React.useState(null);
+      const [frozenUp, setFrozenUp] = React.useState(null);
       const [notice, setNotice] = React.useState("");
       if (!wide) return null;
       const empty = summary.total === 0;
       const collapsing = summary.expanded > 0;
-      // While a multi-level expansion runs, the live counts flip after the
-      // first pass; freeze the label so it keeps naming the action in flight.
-      const held = busy && frozen !== null ? frozen : null;
-      const label = held !== null
-        ? held.label
-        : empty ? t("empty") : collapsing ? t("collapse") : t("expand");
-      const up = held !== null ? held.up : collapsing;
+      // The live counts flip after the first pass of a multi-level expansion;
+      // freeze the chevron so it keeps pointing at the action in flight.
+      const up = busy && frozenUp !== null ? frozenUp : collapsing;
+      const label = empty ? t("empty") : collapsing ? t("collapse") : t("expand");
       const blocked = empty || busy;
-      const title = empty ? t("empty") : label;
       const activate = () => {
         if (blocked) return;
-        setFrozen({ label: collapsing ? t("collapse") : t("expand"), up: collapsing });
+        setFrozenUp(collapsing);
         setBusy(true);
         setNotice("");
         Promise.resolve(toggleAll()).then((result) => {
@@ -334,21 +333,20 @@ window.__ModuleLoader__.load({
           setNotice(t("failed"));
         }).finally(() => {
           setBusy(false);
-          setFrozen(null);
+          setFrozenUp(null);
         });
       };
       return h("div", { className: "dshwca-entry" },
         h("button", {
           type: "button",
           className: "dshwca-button",
-          title,
+          title: label,
           "aria-label": label,
           "aria-disabled": blocked ? "true" : undefined,
           onClick: activate,
           "data-dsh-workspace-collapse-all": "",
         },
-        h(EntryIcon, { up }),
-        h("span", { className: "dshwca-label" }, label)),
+        h(EntryIcon, { up })),
         h("span", { className: "dshwca-status", role: "status", "aria-live": "polite" }, notice));
     }
 
