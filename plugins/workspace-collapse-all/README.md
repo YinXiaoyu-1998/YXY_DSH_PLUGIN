@@ -1,5 +1,7 @@
 # dsh-workspace-collapse-all · 工作区一键收起 / 展开
 
+> 本文档为中文。仓库总览与语言切换：[English](../../README.md) · [中文](../../README.zh.md) · [日本語](../../README.ja.md)
+
 在 DSH 侧栏**账号行上方**常驻一个入口，一键把所有工作区（项目）收起或展开。
 
 位置与 `ds-harness-remote` 的常驻入口相同：`sidebar.footer.action` 槽位，宽态显示
