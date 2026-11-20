@@ -2,119 +2,57 @@
 
 > 本文档为中文。仓库总览与语言切换：[English](../../README.md) · [中文](../../README.zh.md) · [日本語](../../README.ja.md)
 
-在 DSH 侧栏**账号行上方**常驻一个入口，一键把所有工作区（项目）收起或展开。
-
-位置和排版与 `ds-harness-remote`（0.6.x）的常驻入口一致：同一个 `sidebar.footer.action`
-槽位、42px 行高（`margin:4px 2px`）、36×36 命中区、`--dsw-radius-md`（默认 12px）圆角、
-`--dsw-alias-interactive-bg-hover` 悬停底色。
-**不显示文字**：状态由图标方向表达（双 chevron 向上=收起，向下=展开），完整说明放在
-`title` 与 `aria-label` 里，鼠标悬停或读屏可读到。
+给 DSH 侧栏加一个按钮：一键把所有工作区（项目）收起或展开。
 
 ![插件图标](icon.svg)
 
-## 它做什么
+## 它长什么样
 
-| 侧栏当前状态 | 图标 | 悬停提示（`title` / `aria-label`） | 点一下 |
+按钮在**侧栏底部、头像上方**，就在 Remote 入口旁边，和它同样大小、同样样式的圆角图标按钮。
+
+## 怎么用
+
+| 侧栏状态 | 图标 | 点一下 | 悬停提示 |
 | --- | --- | --- | --- |
-| 至少一个项目是展开的 | 双 chevron 向上 | 收起全部工作区 | 收起所有项目 |
-| 所有项目都已收起 | 双 chevron 向下 | 展开全部工作区 | 展开所有项目（含嵌套文件夹，逐层展开） |
-| 扁平列表模式 / 正在搜索会话 | 变暗，不可点 | 当前没有工作区 | 无动作 |
-| 侧栏收成窄条（rail） | 不显示 | — | — |
+| 有项目展开 | 双箭头向上 | 全部收起 | 收起全部工作区 |
+| 全部收起 | 双箭头向下 | 全部展开（嵌套文件夹逐层展开） | 展开全部工作区 |
+| 扁平列表 / 正在搜索会话 | 变暗，不可点 | — | 当前没有工作区 |
 
-「展开全部工作区」会逐层进行：收起的文件夹展开后才会出现子文件夹，因此需要多轮点击。
-插件每一轮都会等宿主把 `aria-expanded` 写回（最多 3 帧），同一行在一次操作里只点一次，
-最多 8 层，避免把刚展开的行又点回去。
-
-点击完成后，入口会用读屏播报结果（「已收起 N 个工作区」/「已展开 N 个工作区」）；
-如果点了却没有任何变化（宿主改版、不再通过普通点击切换），会播报
-「未能切换工作区，侧栏结构可能已变化」，而不是静默无反应。
-
-## 为什么这样做
-
-DSH 0.2.x 里，`工作区` 标题行（搜索 / 筛选 / 新建那一行）由
-`@deepseek-ai/dsh-client-ui-workspace` 私有渲染，**没有对外槽位**；项目的开合状态存在
-该包的私有持久化 store（`dsh.workspace.view.v5`），**不在任何 Client Service 上**。
-
-所以本插件走官方可见的那一侧：每个项目行是 `[data-row-key^="workspace:"][role="treeitem"][aria-expanded]`，
-点击即切换自己的分组。插件只读 `aria-expanded`、点需要翻转的行，动画、嵌套与状态持久化
-全部交给侧栏本身，因此刷新后开合状态保留。
-
-## 已知限制
-
-- 依赖侧栏工作区行的结构（`data-sidebar-list-area`、`data-row-key`、`aria-expanded`）。
-  某个 DSH 版本改了这些标记时，按钮不会乱点：要么置灰，要么播报失败原因。
-- 一次性动作：收起后不记得你原来的混合展开状态，再点只会全部展开。
-- 不改变会话本身，不写会话日志，不联网。
-- 侧栏窄条（rail）模式下不渲染列表，因此入口隐藏（同槽位的其他插件仍显示图标入口）。
-- 按钮文案在 `lib/client.cjs` 的 `zh` / `en` 字典里；`locale/*.json` 只管插件页的
-  标题、描述与详情。
+按钮上没有文字，状态靠箭头方向表达；鼠标悬停能看到完整的动作名称，读屏也会读出来。
+侧栏收成窄条（rail）时按钮隐藏，因为那种模式下侧栏不显示工作区列表。
 
 ## 安装
 
-从 npm 安装（推荐）：
+在 **设置 → 插件 → 添加插件** 里填包名：
 
-    dsh plugin --profile your-profile add dsh-workspace-collapse-all
+```
+dsh-workspace-collapse-all
+```
 
-或在 DSH Desktop 的“设置 → 插件 → 添加插件”里填包名。
+安装后重启 DSH 或重新加载插件列表；如果按钮没出现，刷新一次页面（⌘R）。
 
-打包形态：`cordis.patch.yml` 插入一行 Host 插件；界面全在 web 客户端
-（`lib/client.cjs`），Host 侧是空实现。开发时也可以用本地目录（会直接 link 仓库，
-改动即时生效）：
+想固定版本就在包名后加版本号，例如 `dsh-workspace-collapse-all@0.1.3`。
+用中国大陆镜像源安装时，镜像可能比 npm 慢、最新版指向旧版本，需要最新版请把安装源切到官方源。
 
-    dsh plugin --profile probe-collapse add "$PWD/plugins/workspace-collapse-all"
+## 卸载 / 停用
 
-启用后无需重启即可通过 HMR 生效；若替换了同名包的新版本，需要重启一次加载新的客户端模块。
+在 **设置 → 插件** 里停用或移除本插件即可；停用后按钮消失，侧栏恢复原状。
 
-## 诊断
+## 已知限制
 
-客户端加载后会在页面挂一个诊断对象，便于确认状态与排查：
+- 侧栏收成 56px 窄条（rail）时不显示按钮。
+- 扁平列表模式、或正在搜索会话时不可用（此时没有工作区分组）。
+- 一次性动作：收起之后，它不记得你原来哪些项目是展开的，再点只能全部展开。
+- 如果某个 DSH 版本改了侧栏的项目行结构，按钮会自行禁用或提示切换失败，不会乱点，也不会
+  改动任何会话。
 
-    window.__DSH_WORKSPACE_COLLAPSE_ALL__.report()
-    // { version, status: "active" | "inactive" | "disposed",
-    //   lastAction: "collapse" | "expand" | null, lastCount, lastError,
-    //   summary: { total, expanded } }
+## 出问题时
 
-- `summary.total === 0` 说明当前视图没有工作区行（扁平列表 / 搜索 / 未展开侧栏），入口此时不可点。
-- `lastError: "list-area-missing"` 说明侧栏列表区不存在；`"no-rows"` 说明没有可见分组。
-- `lastError: "no-effect"` 说明点了行但 `aria-expanded` 没变：宿主可能改了交互方式，界面已播报失败。
+在页面控制台运行下面这行，可以看到插件当前状态、最近一次动作和工作区统计：
 
-## 开发
+```js
+window.__DSH_WORKSPACE_COLLAPSE_ALL__.report()
+```
 
-    npm test        # 客户端 bundle 形状 + 收起/展开逻辑（假 DOM）
-
-`test/client.test.mjs` 覆盖：模块注册 id、`inject`、槽位注册参数、中英词典、结果文案插值、
-样式只用主题 token、无列表区 / 无项目行两种空态、收起全部、逐层展开全部、
-迟到写回不被重复点击、点击无效时上报失败、组件在 rail / 空态 / 展开 / 收起四种渲染、
-以及样式条目的清理。
-
-## 发布到 npm
-
-包名 `dsh-workspace-collapse-all`，MIT，registry 固定 `https://registry.npmjs.org`。
-
-    cd plugins/workspace-collapse-all
-    npm publish            # publishConfig 已指定 registry 与 access: public
-
-发布后按包名安装（不再需要本地目录）：
-
-    dsh plugin --profile your-profile add dsh-workspace-collapse-all
-
-注意两点：
-
-- 本机默认 registry 是 npmmirror，刚发布的版本在镜像上可能有延迟；急着验证时用
-  `npm publish --registry=https://registry.npmjs.org` 发布、或用 `npm view --registry=https://registry.npmjs.org` 查。
-- npm 上已发布的版本不能覆盖，改动要先 bump `version`。
-
-## 探针验证
-
-界面只能在运行中的 DSH 里看，仓库约定先用一次性 profile：
-
-    DSH="dsh"
-    "$DSH" --profile probe-collapse --from-default-profile web --dump-config
-    "$DSH" plugin --profile probe-collapse add "$PWD/plugins/workspace-collapse-all"
-    "$DSH" --profile probe-collapse --no-open --port 0
-
-确认入口出现、点一下全收 / 再点全展、刷新后状态保留，然后删掉该 profile：
-
-    rm -rf ~/.dsh/profiles/probe-collapse
-
-不要直接改 desktop profile。
+`summary.total` 为 0 表示当前视图没有可操作的工作区；`lastError` 是 `no-effect` 表示点了没
+有任何变化（通常是 DSH 版本改了结构），把这段输出发给维护者即可。

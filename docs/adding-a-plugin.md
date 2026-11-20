@@ -107,7 +107,33 @@ Then install the *package name* in a throwaway profile and delete that profile:
 
 A version on npm cannot be overwritten: bump `version` for any change.
 
-## 9. Update the repository docs
+## 9. Update the user-facing docs
+
+The READMEs are for people who install the plugin, not for whoever maintains it.
+Keep them about what the plugin adds, how to install it, how to use it, what it
+cannot do, and how to report a problem. Development, publishing, packaging and
+internal implementation notes belong here, in `docs/`, and in `plugins/README.md`.
+
+- Root `README.md`, `README.zh.md` and `README.ja.md`: one row per plugin in the
+  plugin table, plus a short "how to use it" paragraph.
+- `plugins/README.md` and this file: layout, naming, tests, publishing.
+- Each plugin `README.md`: usage, install, limitations, troubleshooting.
+
+## 10. Development commands
+
+Every plugin's tests run from the repository root:
+
+    npm test
+
+Each plugin keeps its own build and test commands, for example:
+
+    cd plugins/skill-display-enrichment
+    node scripts/sync-metadata.mjs   # regenerate the embedded label list
+    npm test
+
+Integration testing uses a throwaway DSH profile; do not touch the `desktop`
+profile until the probe passes. DSH rewrites the plugin entry only on a version
+bump, so bump `version` before asking anyone to reinstall.
 
 - Add the plugin to README.md and README.zh.md.
 - Add it to plugins/README.md.
