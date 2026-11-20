@@ -1,6 +1,6 @@
 {
   "name": "dsh-workspace-collapse-all",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collapse or expand every workspace group in the DSH sidebar from one persistent entry above the account row.",
   "repository": {
     "type": "git",
