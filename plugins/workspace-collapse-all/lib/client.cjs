@@ -20,7 +20,7 @@ window.__ModuleLoader__.load({
     const React = require("react");
     const h = React.createElement;
 
-    const VERSION = "0.1.2";
+    const VERSION = "0.1.3";
     const NS = "workspace-collapse-all";
     const STYLE_ID = "dsh-workspace-collapse-all-style";
     /** The browser renders every group header with this key prefix. */
