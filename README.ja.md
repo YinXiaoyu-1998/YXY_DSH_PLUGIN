@@ -66,11 +66,15 @@ dsh plugin --profile probe-topic add "$PWD/plugins/workspace-collapse-all"
 
 ### workspace-collapse-all
 
-`sidebar.footer.action`（アカウント行の上）に常設の項目を追加します。
+`sidebar.footer.action`（アカウント行の上）に**アイコンのみ**の常設項目を追加します。配置は
+`ds-harness-remote` の項目に合わせており、36px の行、36×36 のヒット領域、8px の角丸、
+同じホバー／フォーカスの扱いです。
 
-- いずれかのワークスペースが開いていれば **Collapse all workspaces** と表示し、すべて閉じます。
-- すべて閉じているときは **Expand all workspaces** と表示し、入れ子のフォルダも 1 階層ずつ開きます。
-- フラットリスト表示中やセッション検索中は **No workspaces here** と表示して無効になります。
+- いずれかのワークスペースが開いているときは二重シェブロンが上向きで、クリックするとすべて閉じます。
+- すべて閉じているときは下向きになり、クリックすると入れ子のフォルダも 1 階層ずつ開きます。
+- 可視テキストはなく、文言はツールチップとアクセシブル名にあります: **Collapse all workspaces**、
+  **Expand all workspaces**、**No workspaces here**。
+- フラットリスト表示中やセッション検索中は暗くなり、フォーカスは可能なままです。
 - サイドバーが 56px のレール表示のときは非表示です（その状態では一覧自体が描画されないため）。
 
 サイドバーのワークスペース行の構造に依存します。DSH の更新でその構造が変わった場合は、

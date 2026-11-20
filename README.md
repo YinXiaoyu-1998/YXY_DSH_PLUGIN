@@ -66,12 +66,16 @@ dsh plugin --profile probe-topic add "$PWD/plugins/workspace-collapse-all"
 
 ### workspace-collapse-all
 
-Adds one persistent entry to `sidebar.footer.action`, above the account row:
+Adds one icon-only entry to `sidebar.footer.action`, above the account row, laid out like
+the `ds-harness-remote` entry: a 36 px cell, a 36×36 hit area, an 8 px radius, the same
+hover and focus treatments.
 
-- while any workspace is open it reads **Collapse all workspaces** and closes every group;
-- once all are closed it reads **Expand all workspaces** and opens every group, walking
+- a double chevron points up while any workspace is open; clicking closes every group;
+- once all are closed the chevron points down and clicking opens every group, walking
   nested folders level by level;
-- in the flat list or while searching sessions the entry dims to **No workspaces here**;
+- there is no visible text: the wording lives in the tooltip and accessible name —
+  **Collapse all workspaces**, **Expand all workspaces**, **No workspaces here**;
+- in the flat list or while searching sessions the entry dims and stays focusable;
 - in the 56 px rail the entry is hidden, because the sidebar does not render the list there.
 
 It depends on the sidebar's workspace-row markup. If a DSH release changes it, the entry
