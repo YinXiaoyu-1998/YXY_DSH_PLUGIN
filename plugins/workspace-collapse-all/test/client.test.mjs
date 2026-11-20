@@ -186,6 +186,12 @@ assert.match(styles[0].textContent, /--dsw-alias-label-primary/);
 assert.match(styles[0].textContent, /--dsw-alias-interactive-bg-hover/);
 assert.match(styles[0].textContent, /:focus-visible/);
 assert.doesNotMatch(styles[0].textContent, /#[0-9a-fA-F]{3,8}\b/, "no literal colors");
+// The entry keeps the ds-harness-remote footer rhythm and ships no label element.
+assert.match(styles[0].textContent, /\.dshwca-button\{[^}]*width:36px/, "36px hit area");
+assert.match(styles[0].textContent, /\.dshwca-button\{[^}]*border-radius:var\(--dsw-radius-md,12px\)/, "host radius token");
+assert.match(styles[0].textContent, /\.dshwca-entry\{[^}]*height:42px/, "42px footer row");
+assert.match(styles[0].textContent, /\.dshwca-entry\{[^}]*margin:4px 2px/, "4px/2px spacing like the reference entry");
+assert.doesNotMatch(styles[0].textContent, /dshwca-label/, "no label style left");
 
 /* ----------------------------------------------------------------- toggle */
 
@@ -254,7 +260,7 @@ assert.equal(inert.clicks, 1);
 assert.deepEqual(api.summarize(), { total: 1, expanded: 1 });
 
 const report = JSON.parse(api.report());
-assert.equal(report.version, "0.1.0");
+assert.equal(report.version, "0.1.3");
 assert.equal(report.lastError, "no-effect");
 
 const styleDisposer = first.effects[1];
@@ -274,29 +280,33 @@ function render(summaryState, props) {
   return mounted.registrations[0].component({ ...props, t });
 }
 
-// Rail mode renders nothing, so a missing `wide` must not paint a text button.
+// Rail mode renders nothing, so a missing `wide` must not paint a control.
 assert.equal(render(undefined, { wide: false }), null);
 assert.equal(render(undefined, {}), null);
 
-// Empty view: the label explains the state instead of naming an action, and
-// the control stays focusable through aria-disabled.
+// Empty view: no visible text, the reason travels in title/aria-label, and the
+// control stays focusable through aria-disabled.
 const emptyTree = render({ total: 0, expanded: 0 }, { wide: true });
 const emptyButton = emptyTree.children[0];
-const emptyLabel = emptyButton.children[1];
-assert.equal(emptyLabel.children[0], dicts.zh.empty);
+assert.equal(emptyButton.children.length, 1, "icon only, no visible label");
+assert.equal(emptyButton.props["aria-label"], dicts.zh.empty);
+assert.equal(emptyButton.props.title, dicts.zh.empty);
 assert.equal(emptyButton.props["aria-disabled"], "true");
 assert.equal(emptyButton.props.disabled, undefined, "native disabled would drop focus");
 assert.equal(emptyTree.children[1].props.role, "status");
 
-// Some groups open: the label names the collapse action and the control is live.
+// Some groups open: the chevron points up and the accessible name says collapse.
 const openTree = render({ total: 3, expanded: 2 }, { wide: true });
 const openButton = openTree.children[0];
-assert.equal(openButton.children[1].children[0], dicts.zh.collapse);
+assert.equal(openButton.children.length, 1, "icon only");
+assert.equal(openButton.props["aria-label"], dicts.zh.collapse);
+assert.equal(openButton.props.title, dicts.zh.collapse);
 assert.equal(openButton.props["aria-disabled"], undefined);
-assert.match(openButton.props["aria-label"], /收起全部工作区/);
 
 // All groups closed: the same control now expands.
 const closedTree = render({ total: 3, expanded: 0 }, { wide: true });
-assert.equal(closedTree.children[0].children[1].children[0], dicts.zh.expand);
+assert.equal(closedTree.children[0].props["aria-label"], dicts.zh.expand);
+assert.equal(closedTree.children[0].props.title, dicts.zh.expand);
+
 
 console.log("workspace-collapse-all: client tests passed");
