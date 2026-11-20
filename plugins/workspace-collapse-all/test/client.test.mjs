@@ -186,9 +186,11 @@ assert.match(styles[0].textContent, /--dsw-alias-label-primary/);
 assert.match(styles[0].textContent, /--dsw-alias-interactive-bg-hover/);
 assert.match(styles[0].textContent, /:focus-visible/);
 assert.doesNotMatch(styles[0].textContent, /#[0-9a-fA-F]{3,8}\b/, "no literal colors");
-// The entry keeps the 36px footer rhythm from ds-harness-remote and ships no label element.
+// The entry keeps the ds-harness-remote footer rhythm and ships no label element.
 assert.match(styles[0].textContent, /\.dshwca-button\{[^}]*width:36px/, "36px hit area");
-assert.match(styles[0].textContent, /\.dshwca-button\{[^}]*border-radius:8px/, "8px radius");
+assert.match(styles[0].textContent, /\.dshwca-button\{[^}]*border-radius:var\(--dsw-radius-md,12px\)/, "host radius token");
+assert.match(styles[0].textContent, /\.dshwca-entry\{[^}]*height:42px/, "42px footer row");
+assert.match(styles[0].textContent, /\.dshwca-entry\{[^}]*margin:4px 2px/, "4px/2px spacing like the reference entry");
 assert.doesNotMatch(styles[0].textContent, /dshwca-label/, "no label style left");
 
 /* ----------------------------------------------------------------- toggle */
@@ -258,7 +260,7 @@ assert.equal(inert.clicks, 1);
 assert.deepEqual(api.summarize(), { total: 1, expanded: 1 });
 
 const report = JSON.parse(api.report());
-assert.equal(report.version, "0.1.1");
+assert.equal(report.version, "0.1.2");
 assert.equal(report.lastError, "no-effect");
 
 const styleDisposer = first.effects[1];

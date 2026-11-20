@@ -20,7 +20,7 @@ window.__ModuleLoader__.load({
     const React = require("react");
     const h = React.createElement;
 
-    const VERSION = "0.1.1";
+    const VERSION = "0.1.2";
     const NS = "workspace-collapse-all";
     const STYLE_ID = "dsh-workspace-collapse-all-style";
     /** The browser renders every group header with this key prefix. */
@@ -174,12 +174,12 @@ window.__ModuleLoader__.load({
     }
 
     const CSS = [
-      // Geometry mirrors the ds-harness-remote footer entry: a 36px cell in the
-      // footer row, a 36px hit area and an 8px radius, so the two entries sit in
-      // the same rhythm. No label: the state lives in the icon, title and
-      // aria-label.
-      ".dshwca-entry{box-sizing:border-box;position:relative;flex:none;display:block;width:36px;min-width:36px;max-width:100%;height:36px;margin:0}",
-      ".dshwca-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:36px;height:36px;min-height:36px;margin:0;padding:0;border:0;border-radius:8px;background:transparent;color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer}",
+      // Geometry mirrors the ds-harness-remote footer entry as shipped in 0.6.x:
+      // a 36px cell with 4px/2px margins inside a 42px footer row, a 36px hit
+      // area and the host radius token. No label: the state lives in the icon,
+      // title and aria-label.
+      ".dshwca-entry{box-sizing:border-box;position:relative;flex:none;display:flex;align-items:center;justify-content:center;width:36px;min-width:36px;max-width:100%;height:42px;margin:4px 2px}",
+      ".dshwca-button{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:36px;height:36px;min-height:36px;margin:0;padding:0;border:0;border-radius:var(--dsw-radius-md,12px);background:transparent;color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer}",
       ".dshwca-button:hover{background:var(--dsw-alias-interactive-bg-hover)}",
       ".dshwca-button:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-2px}",
       ".dshwca-button[aria-disabled=\"true\"]{opacity:.45;cursor:default}",

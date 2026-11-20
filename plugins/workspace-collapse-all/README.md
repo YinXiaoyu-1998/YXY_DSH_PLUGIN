@@ -2,8 +2,9 @@
 
 在 DSH 侧栏**账号行上方**常驻一个入口，一键把所有工作区（项目）收起或展开。
 
-位置和排版与 `ds-harness-remote` 的常驻入口完全一致：同一个 `sidebar.footer.action`
-槽位、36px 行高、36×36 命中区、8px 圆角、`--dsw-alias-interactive-bg-hover` 悬停底色。
+位置和排版与 `ds-harness-remote`（0.6.x）的常驻入口一致：同一个 `sidebar.footer.action`
+槽位、42px 行高（`margin:4px 2px`）、36×36 命中区、`--dsw-radius-md`（默认 12px）圆角、
+`--dsw-alias-interactive-bg-hover` 悬停底色。
 **不显示文字**：状态由图标方向表达（双 chevron 向上=收起，向下=展开），完整说明放在
 `title` 与 `aria-label` 里，鼠标悬停或读屏可读到。
 
